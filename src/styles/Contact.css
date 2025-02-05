@@ -1,0 +1,90 @@
+/* Contact.css
+   File: Contact.css
+   Student: Andres Acevedo
+   StudentID: 12345678
+   Date: 2025-02-04
+*/
+
+.contact-section {
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin: 20px auto;
+    
+  }
+  
+  .contact-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .contact-info {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  .contact-info h2 {
+    margin-top: 0;
+  }
+  
+  .contact-form-container {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--card-bg);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  .contact-form label {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+  
+  .contact-form button {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background-color: #21a1f1;
+  }
+  

@@ -1,0 +1,41 @@
+/* index.css
+   File: index.css
+   Student: Andres Acevedo
+   StudentID: 12345678
+   Date: 2025-02-04
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --background-color: #121212;    /* Page background */
+  --card-bg: #1e1e1e;             /* Card and form background */
+  --primary-color: #1a1a1a;       /* Header/Footer background */
+  --accent-color: #61dafb;        /* Friendly accent color */
+  --title-thumbnail-color: #0084a9;
+  --text-color: #ffffff;          /* Main text color */
+  --border-color: #333333;        /* Borders */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #fff;
+}
