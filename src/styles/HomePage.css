@@ -1,0 +1,21 @@
+/* src/styles/HomePage.css */
+.homepage {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Smooth scroll behavior for the entire page */
+.homepage section {
+  scroll-margin-top: 80px;
+}
+
+/* Additional spacing and layout adjustments */
+.homepage > * {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@media (max-width: 768px) {
+  .homepage section {
+    scroll-margin-top: 60px;
+  }
+}
