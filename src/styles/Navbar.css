@@ -1,0 +1,260 @@
+/* src/styles/Navbar.css */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  padding: 1.5rem 0;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  justify-self: start;
+}
+
+.nav-logo-wrapper:hover {
+  opacity: 0.7;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .nav-logo {
+  color: #1a1a1a;
+}
+
+.nav-subtitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .nav-subtitle {
+  color: #666666;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-self: center;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.navbar.scrolled .nav-link {
+  color: #1a1a1a;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.navbar.scrolled .nav-link::after {
+  background-color: #e74c3c;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-self: end;
+}
+
+.resume-button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navbar.scrolled .resume-button {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.resume-button:hover {
+  background-color: #ffffff;
+  color: #e74c3c;
+  transform: translateY(-2px);
+}
+
+.navbar.scrolled .resume-button:hover {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.nav-social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar.scrolled .social-link {
+  background-color: rgba(231, 76, 60, 0.08);
+}
+
+.social-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.navbar.scrolled .social-link:hover {
+  background-color: rgba(231, 76, 60, 0.15);
+}
+
+.social-link img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.navbar.scrolled .social-link img {
+  filter: brightness(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .navbar-container {
+    grid-template-columns: 1fr auto;
+    padding: 0 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .nav-links {
+    grid-column: 1 / -1;
+    justify-self: center;
+    gap: 1rem;
+    order: 3;
+    margin-top: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .resume-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-social {
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social-link img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    display: none;
+  }
+
+  .navbar-container {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav-right {
+    gap: 0.75rem;
+  }
+
+  .resume-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-social {
+    gap: 0.5rem;
+  }
+}
