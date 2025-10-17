@@ -1,7 +1,7 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import '../styles/HeroSection.css';
-import profilePhoto from '../assets/photo/profile-photo.jpg'; 
+import profilePhoto from '../assets/images/profile-photo.jpg'; 
 
 function HeroSection() {
   const scrollToProjects = () => {
@@ -19,6 +19,8 @@ function HeroSection() {
             <p className="hero-description">
               Game programmer specializing in systems and gameplay programming, focused on 
               writing efficient, clean code and tackling new challenges in game development.
+              <br />
+              @Toronto, ON 🇨🇦
             </p>
             <button 
               className="hero-cta"
