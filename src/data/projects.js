@@ -4,27 +4,31 @@ export const projectsData = [
   {
     id: 1,
     title: "The Book of Glory Prototype",
-    shortDescription: "A mental health-focused RPG with rhythm-based combat. Directed the project and developed the dual-world gameplay system and combat mechanics in Unity.",
+    shortDescription: "A mental health-focused RPG with rhythm-based combat. Directed the project and developed the dual-world gameplay system and gameplay mechanics in Unreal Engine 5.",
     fullDescription: "The Book of Glory is a unique RPG that explores mental health themes through a dual-world gameplay experience. Players navigate between a realistic daily life and fantastical dream adventures, featuring rhythm-based combat mechanics that challenge both timing and strategy.",
     role: "Game Director & Gameplay Programmer",
     tags: ["Unreal Engine 5", "C++", "Blueprints", "RPG"],
     imageUrl: "/portfolio/assets/images/tbog-image.jpg",
     videoUrl: "/portfolio/assets/videos/tbog-video.mp4",
     features: [
-      "Dual-world gameplay system combining real-life simulation and dream adventures",
+      "Dual-world gameplay systems",
       "Rhythm-based combat mechanics integrated with RPG elements",
       "Mental health narrative that explores psychological themes",
-      "Paper Mario-inspired art style and game design"
+      "Paper Mario-inspired art style"
     ],
     achievements: [
-      "Successfully directed a team to create a unique RPG prototype",
-      "Implemented innovative rhythm-combat hybrid system",
-      "Created compelling narrative around mental health themes"
+      "Designed, programmed, and optimized core gameplay mechanics, systems, and events for the video games Colors and The Book of Glory using C#, C++, and Blueprints in Unity and Unreal Engine",
+      "Led a 12-member startup using the Scrum methodology to ensure efficient project management and maintained project organization through GitHub version control",
+      "Presented The Book of Glory in a virtual booth at Gamescom 2023"
     ],
     links: {
-      itchio: "https://andresac90.itch.io/the-book-of-glory-prototype"
+      itchio: "https://nefarious-game-studios.itch.io/tbog"
     },
-    gallery: []
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/tbog-screenshot1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/tbog-screenshot2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/tbog-screenshot3.jpg" }
+    ]
   },
   {
     id: 2,
