@@ -9,7 +9,8 @@ export const projectsData = [
     role: "Game Director & Gameplay Programmer",
     tags: ["Unreal Engine 5", "C++", "Blueprints", "RPG"],
     imageUrl: "/portfolio/assets/images/tbog-image.jpg",
-    videoUrl: "/portfolio/assets/videos/tbog-video.mp4",
+    videoUrl: "/portfolio/assets/videos/tbog-video.mp4", // Full quality for project page
+    videoPreviewUrl: "/portfolio/assets/videos/tbog-video-compressed.mp4", // Compressed for home cards
     features: [
       "Dual-world gameplay systems",
       "Rhythm-based combat mechanics integrated with RPG elements",
@@ -25,9 +26,9 @@ export const projectsData = [
       itchio: "https://nefarious-game-studios.itch.io/tbog"
     },
     gallery: [
-      { type: "image", url: "/portfolio/assets/images/tbog-screenshot1.jpg" },
-      { type: "image", url: "/portfolio/assets/images/tbog-screenshot2.jpg" },
-      { type: "image", url: "/portfolio/assets/images/tbog-screenshot3.jpg" }
+      { type: "image", url: "/portfolio/assets/images/tbog-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/tbog-ss2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/tbog-ss3.jpg" }
     ]
   },
   {
@@ -37,8 +38,9 @@ export const projectsData = [
     fullDescription: "Something 2 Fear is an intense cooperative survival horror experience. Players must work together to solve puzzles, manage limited resources, and evade a relentless threat in a tense atmospheric environment.",
     role: "Programmer",
     tags: ["Unity", "C#", "Horror", "Multiplayer"],
-    imageUrl: "/portfolio/assets/images/s2f-cover.jpg",
-    videoUrl: "/portfolio/assets/videos/s2f-gameplay.mp4",
+    imageUrl: "/portfolio/assets/images/something2fear-image.jpg",
+    videoUrl: "/portfolio/assets/videos/something2fear-video.mp4",
+    videoPreviewUrl: "/portfolio/assets/videos/something2fear-video-compressed.mp4", 
     features: [
       "Cooperative multiplayer horror gameplay",
       "AI-driven enemy behavior and pathfinding",
@@ -53,7 +55,11 @@ export const projectsData = [
     links: {
       itchio: "https://andresac90.itch.io/something-2-fear"
     },
-    gallery: []
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/s2f-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/s2f-ss2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/s2f-ss3.jpg" }
+    ]
   },
   {
     id: 3,

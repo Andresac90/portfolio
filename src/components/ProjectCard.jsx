@@ -14,7 +14,9 @@ function ProjectCard({ project, setCurrentView }) {
 
   const handleMouseEnter = () => {
     setIsHovering(true);
-    if (videoRef.current && project.videoUrl && !videoError) {
+    // Use preview video if available, otherwise fall back to main video
+    const videoToPlay = project.videoPreviewUrl || project.videoUrl;
+    if (videoRef.current && videoToPlay && !videoError) {
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
         playPromise.catch(err => {
@@ -26,23 +28,26 @@ function ProjectCard({ project, setCurrentView }) {
 
   const handleMouseLeave = () => {
     setIsHovering(false);
-    if (videoRef.current && project.videoUrl && !videoError) {
+    if (videoRef.current && (project.videoPreviewUrl || project.videoUrl) && !videoError) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
   };
 
   const handleVideoError = (e) => {
-    console.error('Video failed to load:', project.videoUrl, e);
+    console.error('Video failed to load:', project.videoPreviewUrl || project.videoUrl, e);
     setVideoError(true);
   };
 
   const handleVideoLoaded = () => {
-    console.log('Video loaded successfully:', project.videoUrl);
+    console.log('Video loaded successfully:', project.videoPreviewUrl || project.videoUrl);
   };
 
+  // Use preview video for card, fall back to main video if no preview
+  const cardVideoUrl = project.videoPreviewUrl || project.videoUrl;
+  
   // Determine what to show
-  const hasVideo = project.videoUrl && !videoError;
+  const hasVideo = cardVideoUrl && !videoError;
   const hasImage = project.imageUrl;
   const showVideo = hasVideo && isHovering;
   const showImage = hasImage && (!hasVideo || !isHovering);
@@ -65,16 +70,18 @@ function ProjectCard({ project, setCurrentView }) {
           />
         )}
         
-        {/* Show video when hovering (if available) */}
+        {/* Show preview video when hovering (if available) */}
         {hasVideo && (
           <video 
+            key={`${project.id}-${cardVideoUrl}`} /* ADDED: Forces React to recreate video element for each project */
             ref={videoRef}
             className="project-video"
-            src={project.videoUrl}
+            src={cardVideoUrl}
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster={project.imageUrl}
             onError={handleVideoError}
             onLoadedData={handleVideoLoaded}
             style={{ display: showVideo ? 'block' : 'none' }}
