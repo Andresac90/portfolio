@@ -1,21 +1,54 @@
 // src/components/ProjectCard.jsx
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import '../styles/ProjectCard.css';
 
 function ProjectCard({ project, setCurrentView }) {
   const videoRef = useRef(null);
+  const cardRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
-  const handleClick = () => {
-    setCurrentView({ type: 'project', projectId: project.id });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  useEffect(() => {
+    // Detect if device is mobile/touch
+    const mobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    setIsMobile(mobile);
 
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-    // Use preview video if available, otherwise fall back to main video
+    // Only set up intersection observer on mobile
+    if (mobile && cardRef.current) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            // Card is considered "centered" when at least 60% is visible
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+              setIsInView(true);
+              playVideo();
+            } else {
+              setIsInView(false);
+              pauseVideo();
+            }
+          });
+        },
+        {
+          threshold: [0, 0.3, 0.6, 0.9], // Multiple thresholds to detect when card is centered
+          rootMargin: '-20% 0px -20% 0px' // Only trigger when card is in the middle 60% of screen
+        }
+      );
+
+      observer.observe(cardRef.current);
+
+      return () => {
+        if (cardRef.current) {
+          observer.unobserve(cardRef.current);
+        }
+      };
+    }
+  }, []);
+
+  const playVideo = () => {
     const videoToPlay = project.videoPreviewUrl || project.videoUrl;
+    
     if (videoRef.current && videoToPlay && !videoError) {
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
@@ -26,11 +59,29 @@ function ProjectCard({ project, setCurrentView }) {
     }
   };
 
-  const handleMouseLeave = () => {
-    setIsHovering(false);
+  const pauseVideo = () => {
     if (videoRef.current && (project.videoPreviewUrl || project.videoUrl) && !videoError) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
+    }
+  };
+
+  const handleClick = () => {
+    setCurrentView({ type: 'project', projectId: project.id });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsHovering(true);
+      playVideo();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsHovering(false);
+      pauseVideo();
     }
   };
 
@@ -43,24 +94,24 @@ function ProjectCard({ project, setCurrentView }) {
     console.log('Video loaded successfully:', project.videoPreviewUrl || project.videoUrl);
   };
 
-  // Use preview video for card, fall back to main video if no preview
   const cardVideoUrl = project.videoPreviewUrl || project.videoUrl;
   
-  // Determine what to show
   const hasVideo = cardVideoUrl && !videoError;
   const hasImage = project.imageUrl;
-  const showVideo = hasVideo && isHovering;
-  const showImage = hasImage && (!hasVideo || !isHovering);
+  
+  // On mobile, show video when card is in view; on desktop, show video on hover
+  const showVideo = hasVideo && (isMobile ? isInView : isHovering);
+  const showImage = hasImage && (!hasVideo || !showVideo);
 
   return (
     <div 
+      ref={cardRef}
       className="project-card" 
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="project-media">
-        {/* Show image when not hovering or as fallback */}
         {showImage && (
           <img 
             className="project-image"
@@ -70,10 +121,9 @@ function ProjectCard({ project, setCurrentView }) {
           />
         )}
         
-        {/* Show preview video when hovering (if available) */}
         {hasVideo && (
           <video 
-            key={`${project.id}-${cardVideoUrl}`} /* ADDED: Forces React to recreate video element for each project */
+            key={`${project.id}-${cardVideoUrl}`}
             ref={videoRef}
             className="project-video"
             src={cardVideoUrl}
@@ -88,14 +138,12 @@ function ProjectCard({ project, setCurrentView }) {
           />
         )}
 
-        {/* Show placeholder if nothing is available */}
         {!hasImage && !hasVideo && (
           <div className="project-placeholder">
             No media available
           </div>
         )}
 
-        {/* Show overlay only if there's no video */}
         {!hasVideo && (
           <div className="project-overlay">
             <span className="view-project">View Project →</span>
