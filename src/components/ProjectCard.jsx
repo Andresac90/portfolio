@@ -20,19 +20,22 @@ function ProjectCard({ project, setCurrentView }) {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            // Card is considered "centered" when at least 60% is visible
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+            // Card is considered "centered" when mostly visible
+            const ratio = entry.intersectionRatio;
+            console.log(`${project.title} visibility:`, ratio);
+            
+            if (entry.isIntersecting && ratio >= 0.5) {
+              console.log(`Playing video for ${project.title}`);
               setIsInView(true);
-              playVideo();
             } else {
+              console.log(`Pausing video for ${project.title}`);
               setIsInView(false);
-              pauseVideo();
             }
           });
         },
         {
-          threshold: [0, 0.3, 0.6, 0.9], // Multiple thresholds to detect when card is centered
-          rootMargin: '-20% 0px -20% 0px' // Only trigger when card is in the middle 60% of screen
+          threshold: [0, 0.25, 0.5, 0.75, 1.0],
+          rootMargin: '-10% 0px -10% 0px'
         }
       );
 
@@ -44,23 +47,29 @@ function ProjectCard({ project, setCurrentView }) {
         }
       };
     }
-  }, []);
+  }, [project.title]);
+
+  // Separate effect to handle video playback based on isInView
+  useEffect(() => {
+    if (isMobile && isInView) {
+      playVideo();
+    } else if (isMobile && !isInView) {
+      pauseVideo();
+    }
+  }, [isInView, isMobile]);
 
   const playVideo = () => {
     const videoToPlay = project.videoPreviewUrl || project.videoUrl;
     
     if (videoRef.current && videoToPlay && !videoError) {
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => {
-          console.error('Error playing video:', err);
-        });
-      }
+      videoRef.current.play().catch(err => {
+        console.error('Error playing video:', err);
+      });
     }
   };
 
   const pauseVideo = () => {
-    if (videoRef.current && (project.videoPreviewUrl || project.videoUrl) && !videoError) {
+    if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
@@ -101,7 +110,7 @@ function ProjectCard({ project, setCurrentView }) {
   
   // On mobile, show video when card is in view; on desktop, show video on hover
   const showVideo = hasVideo && (isMobile ? isInView : isHovering);
-  const showImage = hasImage && (!hasVideo || !showVideo);
+  const showImage = hasImage && !showVideo;
 
   return (
     <div 
@@ -117,7 +126,6 @@ function ProjectCard({ project, setCurrentView }) {
             className="project-image"
             src={project.imageUrl} 
             alt={project.title}
-            style={{ display: showVideo ? 'none' : 'block' }}
           />
         )}
         
@@ -130,7 +138,7 @@ function ProjectCard({ project, setCurrentView }) {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             poster={project.imageUrl}
             onError={handleVideoError}
             onLoadedData={handleVideoLoaded}

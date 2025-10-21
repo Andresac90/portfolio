@@ -223,18 +223,17 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
   .project-page {
-    padding-top: 110px; /* INCREASED - more space from navbar */
+    padding-top: 130px; /* INCREASED - much more space */
   }
 
   .project-container {
-    padding: 0.5rem 1.5rem; /* REDUCED top padding even more */
+    padding: 0 1.5rem 2rem; /* NO top padding, button handles spacing */
   }
 
   .back-button {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
-    margin-top: 0.5rem; /* ADDED - extra space from top */
   }
 
   .project-page-title {
@@ -286,18 +285,17 @@
 
 @media (max-width: 480px) {
   .project-page {
-    padding-top: 100px; /* INCREASED */
+    padding-top: 120px; /* INCREASED */
   }
 
   .project-container {
-    padding: 0.5rem 1rem; /* REDUCED */
+    padding: 0 1rem 2rem; /* NO top padding */
   }
 
   .back-button {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
     margin-bottom: 1rem;
-    margin-top: 0.5rem; /* ADDED */
   }
 
   .project-page-title {
