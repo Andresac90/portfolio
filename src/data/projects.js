@@ -4,13 +4,13 @@ export const projectsData = [
   {
     id: 1,
     title: "The Book of Glory Prototype",
-    shortDescription: "A mental health-focused RPG with rhythm-based combat. Directed the project and developed the dual-world gameplay system and gameplay mechanics in Unreal Engine 5.",
+    shortDescription: "A mental health focused RPG with rhythm-based combat. Directed the project and developed the dual-world gameplay system and gameplay mechanics in Unreal Engine 5.",
     fullDescription: "The Book of Glory is a unique RPG that explores mental health themes through a dual-world gameplay experience. Players navigate between a realistic daily life and fantastical dream adventures, featuring rhythm-based combat mechanics that challenge both timing and strategy.",
     role: "Game Director & Gameplay Programmer",
     tags: ["Unreal Engine 5", "C++", "Blueprints", "RPG"],
     imageUrl: "/portfolio/assets/images/tbog-image.jpg",
-    videoUrl: "/portfolio/assets/videos/tbog-video.mp4", // Full quality for project page
-    videoPreviewUrl: "/portfolio/assets/videos/tbog-video-compressed.mp4", // Compressed for home cards
+    videoUrl: "/portfolio/assets/videos/tbog-video.mp4", 
+    videoPreviewUrl: "/portfolio/assets/videos/tbog-video-compressed.mp4", 
     features: [
       "Dual-world gameplay systems",
       "Rhythm-based combat mechanics integrated with RPG elements",
@@ -34,23 +34,23 @@ export const projectsData = [
   {
     id: 2,
     title: "Something 2 Fear",
-    shortDescription: "A cooperative survival horror game. Developed multiplayer networking system and AI behavior for the enemy using Unity and C#.",
+    shortDescription: "A cooperative survival horror game. Designed the main gameplay loop and developed the core systems for the players using Unity and C#.",
     fullDescription: "Something 2 Fear is an intense cooperative survival horror experience. Players must work together to solve puzzles, manage limited resources, and evade a relentless threat in a tense atmospheric environment.",
-    role: "Programmer",
+    role: "Game Director & Gameplay Programmer",
     tags: ["Unity", "C#", "Horror", "Multiplayer"],
     imageUrl: "/portfolio/assets/images/something2fear-image.jpg",
     videoUrl: "/portfolio/assets/videos/something2fear-video.mp4",
     videoPreviewUrl: "/portfolio/assets/videos/something2fear-video-compressed.mp4", 
     features: [
-      "Cooperative multiplayer horror gameplay",
+      "Cooperative multiplayer with proximity voice chat horror gameplay",
       "AI-driven enemy behavior and pathfinding",
-      "Atmospheric lighting and sound design",
+      "PSX-Style graphics",
       "Puzzle-solving mechanics that require teamwork"
     ],
     achievements: [
       "Successfully implemented multiplayer synchronization",
       "Created tension-building game mechanics",
-      "Developed intelligent enemy AI system"
+      "Developed the gameplay movement and interaction systems for playersß"
     ],
     links: {
       itchio: "https://andresac90.itch.io/something-2-fear"
@@ -64,11 +64,11 @@ export const projectsData = [
   {
     id: 3,
     title: "Castle Blocks",
-    shortDescription: "A puzzle platformer where you build your path using blocks. Created the block placement system and physics-based platforming mechanics in Unity.",
+    shortDescription: "A puzzle platformer where you build your path using blocks. Created and designed the block placement system and physics-based platforming mechanics in Pico-8.",
     fullDescription: "Castle Blocks combines classic platforming with creative building mechanics. Players must strategically place blocks to create paths, overcome obstacles, and reach their goal while managing limited resources.",
     role: "Game Designer & Programmer",
-    tags: ["Unity", "C#", "Platformer", "Puzzle"],
-    imageUrl: "/portfolio/assets/images/castle-blocks-cover.jpg",
+    tags: ["Pico-8", "Lua", "Platformer", "Puzzle"],
+    imageUrl: "/portfolio/assets/images/castleblocks-image.jpg",
     videoUrl: "",
     features: [
       "Dynamic block placement system",
@@ -79,7 +79,7 @@ export const projectsData = [
     achievements: [
       "Created intuitive building mechanics",
       "Balanced challenge and creativity",
-      "Designed 20+ unique levels"
+      "60fps performance optimization in Pico-8"
     ],
     links: {
       itchio: "https://andresac90.itch.io/castle-blocks"
@@ -93,7 +93,7 @@ export const projectsData = [
     fullDescription: "OPYE (One Planet, Your Earth) is an educational game that raises awareness about environmental issues. Players make decisions that impact the planet's health, learning about sustainability and conservation through interactive gameplay.",
     role: "Lead Programmer",
     tags: ["Unity", "C#", "Educational", "Simulation"],
-    imageUrl: "/portfolio/assets/images/opye-cover.jpg",
+    imageUrl: "/portfolio/assets/images/opye-image.jpg",
     videoUrl: "",
     features: [
       "Environmental impact simulation system",
@@ -109,7 +109,7 @@ export const projectsData = [
     links: {
       itchio: "https://andresac90.itch.io/opye"
     },
-    gallery: []
+    gallery: [{ type: "image", url: "/portfolio/assets/images/opye-ss1.jpg" }]
   },
   {
     id: 5,

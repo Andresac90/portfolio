@@ -1,9 +1,13 @@
 // src/pages/ProjectPage.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
+import Lightbox from '../components/Lightbox';
 import '../styles/ProjectPage.css';
 
 function ProjectPage({ project, setCurrentView }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   if (!project) {
     return (
       <div className="project-page">
@@ -19,6 +23,15 @@ function ProjectPage({ project, setCurrentView }) {
       </div>
     );
   }
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   return (
     <div className="project-page">
@@ -135,12 +148,15 @@ function ProjectPage({ project, setCurrentView }) {
             <h2 className="detail-title">Gallery</h2>
             <div className="gallery-grid">
               {project.gallery.map((item, index) => (
-                <div key={index} className="gallery-item">
+                <div 
+                  key={index} 
+                  className="gallery-item"
+                  onClick={() => openLightbox(index)}
+                >
                   {item.type === 'video' ? (
                     <video 
                       className="gallery-video"
                       src={item.url}
-                      controls
                       loop
                       muted
                     />
@@ -158,6 +174,14 @@ function ProjectPage({ project, setCurrentView }) {
         )}
       </div>
       <Footer />
+
+      {lightboxOpen && (
+        <Lightbox
+          images={project.gallery}
+          initialIndex={lightboxIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   );
 }
