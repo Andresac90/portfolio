@@ -63,6 +63,36 @@ export const projectsData = [
   },
   {
     id: 3,
+    title: "Robot Simulation",
+    shortDescription: "A mental health focused RPG with rhythm-based combat. Directed the project and developed the dual-world gameplay system and gameplay mechanics in Unreal Engine 5.",
+    fullDescription: "The Book of Glory is a unique RPG that explores mental health themes through a dual-world gameplay experience. Players navigate between a realistic daily life and fantastical dream adventures, featuring rhythm-based combat mechanics that challenge both timing and strategy.",
+    role: "Game Director & Gameplay Programmer",
+    tags: ["Unreal Engine 5", "C++", "Blueprints", "RPG"],
+    imageUrl: "/portfolio/assets/images/robotsimulation-image.jpg",
+    videoUrl: "/portfolio/assets/videos/robotsimulation-video.mp4", 
+    videoPreviewUrl: "/portfolio/assets/videos/robotsimulation-video-compressed.mp4", 
+    features: [
+      "Dual-world gameplay systems",
+      "Rhythm-based combat mechanics integrated with RPG elements",
+      "Mental health narrative that explores psychological themes",
+      "Paper Mario-inspired art style"
+    ],
+    achievements: [
+      "Designed, programmed, and optimized core gameplay mechanics, systems, and events for the video games Colors and The Book of Glory using C#, C++, and Blueprints in Unity and Unreal Engine",
+      "Led a 12-member startup using the Scrum methodology to ensure efficient project management and maintained project organization through GitHub version control",
+      "Presented The Book of Glory in a virtual booth at Gamescom 2023"
+    ],
+    links: {
+      itchio: "https://nefarious-game-studios.itch.io/tbog"
+    },
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/tbog-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/tbog-ss2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/tbog-ss3.jpg" }
+    ]
+  },
+  {
+    id: 4,
     title: "Castle Blocks",
     shortDescription: "A puzzle platformer where you build your path using blocks. Created and designed the block placement system and physics-based platforming mechanics in Pico-8.",
     fullDescription: "Castle Blocks combines classic platforming with creative building mechanics. Players must strategically place blocks to create paths, overcome obstacles, and reach their goal while managing limited resources.",
@@ -84,62 +114,15 @@ export const projectsData = [
     links: {
       itchio: "https://andresac90.itch.io/castle-blocks"
     },
-    gallery: []
-  },
-  {
-    id: 4,
-    title: "OPYE",
-    shortDescription: "An environmental education simulation game. Developed decision-making systems and visual feedback mechanics to teach sustainability using Unity.",
-    fullDescription: "OPYE (One Planet, Your Earth) is an educational game that raises awareness about environmental issues. Players make decisions that impact the planet's health, learning about sustainability and conservation through interactive gameplay.",
-    role: "Lead Programmer",
-    tags: ["Unity", "C#", "Educational", "Simulation"],
-    imageUrl: "/portfolio/assets/images/opye-image.jpg",
-    videoUrl: "",
-    features: [
-      "Environmental impact simulation system",
-      "Decision-making gameplay with consequences",
-      "Educational content about sustainability",
-      "Visual feedback showing planetary health"
-    ],
-    achievements: [
-      "Created for university Game Design course",
-      "Successfully conveyed environmental message through gameplay",
-      "Developed engaging educational mechanics"
-    ],
-    links: {
-      itchio: "https://andresac90.itch.io/opye"
-    },
-    gallery: [{ type: "image", url: "/portfolio/assets/images/opye-ss1.jpg" }]
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/castleblocks-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/castleblocks-ss2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/castleblocks-ss3.jpg" }]
   },
   {
     id: 5,
-    title: "Escapa de la isla de las muñecas",
-    shortDescription: "A horror puzzle game inspired by Mexican folklore. Designed intricate puzzle sequences and implemented atmospheric horror mechanics in Unity.",
-    fullDescription: "A horror puzzle game inspired by the Island of the Dolls (Isla de las Muñecas) in Mexico. Players must solve challenging puzzles while navigating a haunting environment filled with eerie dolls and Mexican folklore elements.",
-    role: "Programmer & Designer",
-    tags: ["Unity", "C#", "Horror", "Puzzle"],
-    imageUrl: "/portfolio/assets/images/munecas-cover.jpg",
-    videoUrl: "",
-    features: [
-      "Atmospheric horror based on Mexican folklore",
-      "Complex puzzle-solving mechanics",
-      "Environmental storytelling",
-      "Cultural authenticity in setting and narrative"
-    ],
-    achievements: [
-      "Created authentic Mexican horror experience",
-      "Designed intricate puzzle sequences",
-      "Effective use of atmosphere and tension"
-    ],
-    links: {
-      itchio: "https://andresac90.itch.io/escapa-de-la-isla-de-las-munecas"
-    },
-    gallery: []
-  },
-  {
-    id: 6,
-    title: "IndiesMX_Classroom",
-    shortDescription: "A humorous stealth strategy game about cheating on exams. Implemented teacher AI detection system and timing-based stealth mechanics in Unity.",
+    title: "Monster's Flow",
+    shortDescription: "A first person arcade game inspired by call of duty zombies mode. Developed enemy wave system and power-up mechanics using Unity.",
     fullDescription: "A lighthearted strategy game where players must cleverly copy answers from classmates while avoiding the teacher's watchful eye. Features timing-based mechanics and strategic planning.",
     role: "Programmer",
     tags: ["Unity", "C#", "Strategy", "Comedy"],
@@ -162,13 +145,40 @@ export const projectsData = [
     gallery: []
   },
   {
+    id: 6,
+    title: "OPYE",
+    shortDescription: "A platformer game prototype, developed using Unreal Engine during an exchange program in South Korea.",
+    fullDescription: "OPYE is a platformer prototype game where you can't jump on a traditional way, you need to shoot on your feet with a rocket launcher to propel yourself!",
+    role: "Gameplay Programmer & Level Designer",
+    tags: ["Unreal Engine 4", "C++", "Blueprints", "Platformer"],
+    imageUrl: "/portfolio/assets/images/opye-ss1.jpg",
+    videoUrl: "",
+    features: [
+      "Rocket launcher jumping mechanic",
+      "Precision platforming level",
+      "Ray tracing reflections"
+    ],
+    achievements: [
+      "Developed a prototype in an international team during a semester exchange in South Korea",
+      "Sucessfully implemented fluid and responsive movement mechanics",
+      "Completed the prototype within 2 days"
+    ],
+    links: {
+      itchio: "https://andresac90.itch.io/opye"
+    },
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/opye-image.jpg" },
+      { type: "image", url: "/portfolio/assets/images/opye-ss1.jpg" }
+    ]
+  },
+  {
     id: 7,
     title: "Colors - A colorful adventure",
     shortDescription: "A vibrant platformer with color-based mechanics. Designed unique color puzzles and polished movement controls using Unity.",
     fullDescription: "Colors is a cheerful platforming game that takes players through vibrant, colorful worlds. Each level features unique color-based mechanics and challenges, creating a visually stunning and mechanically diverse experience.",
     role: "Developer",
     tags: ["Unity", "C#", "Platformer", "Casual"],
-    imageUrl: "/portfolio/assets/images/colors-cover.jpg",
+    imageUrl: "/portfolio/assets/images/colors-image.jpg",
     videoUrl: "",
     features: [
       "Color-based gameplay mechanics",
@@ -183,6 +193,56 @@ export const projectsData = [
     ],
     links: {
       itchio: "https://andresac90.itch.io/colors"
+    },
+    gallery: []
+  },
+  {
+    id: 8,
+    title: "Escapa de la isla de las muñecas",
+    shortDescription: "A horror puzzle game inspired by Mexican folklore. Designed for a Mexican Game Jam using Unreal Engine.",
+    fullDescription: "A horror puzzle game inspired by the Island of the Dolls (Isla de las Muñecas) in Mexico. Players must solve challenging puzzles while navigating a haunting environment filled with eerie dolls and Mexican folklore elements.",
+    role: "Programmer & Designer",
+    tags: ["Unreal Engine", "C++", "Horror", "Puzzle"],
+    imageUrl: "/portfolio/assets/images/islamunecas-image.jpg",
+    videoUrl: "",
+    features: [
+      "Atmospheric horror based on Mexican folklore",
+      "Complex puzzle-solving mechanics",
+      "Environmental storytelling",
+      "Cultural authenticity in setting and narrative"
+    ],
+    achievements: [
+      "Created authentic Mexican horror experience",
+      "Designed intricate puzzle sequences",
+      "Effective use of atmosphere and tension"
+    ],
+    links: {
+      itchio: "https://andresac90.itch.io/escapa-de-la-isla-de-las-munecas"
+    },
+    gallery: []
+  },
+  {
+    id: 9,
+    title: "Classroom",
+    shortDescription: "A humorous stealth strategy game about cheating on exams. Implemented teacher AI detection system and timing-based stealth mechanics in Unity.",
+    fullDescription: "A lighthearted strategy game where players must cleverly copy answers from classmates while avoiding the teacher's watchful eye. Features timing-based mechanics and strategic planning.",
+    role: "Programmer",
+    tags: ["Unity", "C#", "Strategy", "Comedy"],
+    imageUrl: "/portfolio/assets/images/classroom-image.jpg",
+    videoUrl: "",
+    features: [
+      "Timing-based stealth mechanics",
+      "Teacher AI with detection system",
+      "Multiple classmate personalities",
+      "Risk vs reward decision making"
+    ],
+    achievements: [
+      "Created humorous and relatable gameplay",
+      "Implemented challenging stealth AI",
+      "Designed engaging risk-reward mechanics"
+    ],
+    links: {
+      itchio: "https://nefarious-game-studios.itch.io/classroom"
     },
     gallery: []
   }
