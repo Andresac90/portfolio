@@ -11,31 +11,31 @@ function ProjectCard({ project, setCurrentView }) {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    // Detect if device is mobile/touch
-    const mobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // Detect if device is mobile/touch - more strict detection
+    const checkMobile = () => {
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isSmallScreen = window.innerWidth <= 768;
+      return isTouchDevice && isSmallScreen;
+    };
+
+    const mobile = checkMobile();
     setIsMobile(mobile);
 
-    // Only set up intersection observer on mobile
+    // Only set up intersection observer on mobile devices
     if (mobile && cardRef.current) {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            // Card is considered "centered" when mostly visible
-            const ratio = entry.intersectionRatio;
-            console.log(`${project.title} visibility:`, ratio);
-            
-            if (entry.isIntersecting && ratio >= 0.5) {
-              console.log(`Playing video for ${project.title}`);
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
               setIsInView(true);
             } else {
-              console.log(`Pausing video for ${project.title}`);
               setIsInView(false);
             }
           });
         },
         {
           threshold: [0, 0.25, 0.5, 0.75, 1.0],
-          rootMargin: '-10% 0px -10% 0px'
+          rootMargin: '-20% 0px -20% 0px'
         }
       );
 
@@ -47,9 +47,9 @@ function ProjectCard({ project, setCurrentView }) {
         }
       };
     }
-  }, [project.title]);
+  }, []);
 
-  // Separate effect to handle video playback based on isInView
+  // Separate effect to handle video playback based on isInView (ONLY on mobile)
   useEffect(() => {
     if (isMobile && isInView) {
       playVideo();
@@ -81,6 +81,7 @@ function ProjectCard({ project, setCurrentView }) {
   };
 
   const handleMouseEnter = () => {
+    // Only handle hover on desktop (non-mobile)
     if (!isMobile) {
       setIsHovering(true);
       playVideo();
@@ -88,6 +89,7 @@ function ProjectCard({ project, setCurrentView }) {
   };
 
   const handleMouseLeave = () => {
+    // Only handle hover on desktop (non-mobile)
     if (!isMobile) {
       setIsHovering(false);
       pauseVideo();
