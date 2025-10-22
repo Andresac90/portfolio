@@ -70,7 +70,7 @@ export const projectsData = [
     tags: ["Unreal Engine 5", "C++", "Blueprints", "RPG"],
     imageUrl: "/portfolio/assets/images/robotsimulation-image.jpg",
     videoUrl: "/portfolio/assets/videos/robotsimulation-video.mp4", 
-    videoPreviewUrl: "/portfolio/assets/videos/robotsimulation-video-compressed.mp4", 
+    videoPreviewUrl: "/portfolio/assets/videos/robotsimulation-video-preview.mp4", 
     features: [
       "Dual-world gameplay systems",
       "Rhythm-based combat mechanics integrated with RPG elements",
