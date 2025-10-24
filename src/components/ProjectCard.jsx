@@ -1,8 +1,10 @@
 // src/components/ProjectCard.jsx
 import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ProjectCard.css';
 
-function ProjectCard({ project, setCurrentView }) {
+function ProjectCard({ project }) {
+  const navigate = useNavigate();
   const videoRef = useRef(null);
   const cardRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -11,7 +13,6 @@ function ProjectCard({ project, setCurrentView }) {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    // Detect if device is mobile/touch - more strict detection
     const checkMobile = () => {
       const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       const isSmallScreen = window.innerWidth <= 768;
@@ -21,7 +22,6 @@ function ProjectCard({ project, setCurrentView }) {
     const mobile = checkMobile();
     setIsMobile(mobile);
 
-    // Only set up intersection observer on mobile devices
     if (mobile && cardRef.current) {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -49,7 +49,6 @@ function ProjectCard({ project, setCurrentView }) {
     }
   }, []);
 
-  // Separate effect to handle video playback based on isInView (ONLY on mobile)
   useEffect(() => {
     if (isMobile && isInView) {
       playVideo();
@@ -76,12 +75,11 @@ function ProjectCard({ project, setCurrentView }) {
   };
 
   const handleClick = () => {
-    setCurrentView({ type: 'project', projectId: project.id });
+    navigate(`/portfolio/project/${project.id}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleMouseEnter = () => {
-    // Only handle hover on desktop (non-mobile)
     if (!isMobile) {
       setIsHovering(true);
       playVideo();
@@ -89,7 +87,6 @@ function ProjectCard({ project, setCurrentView }) {
   };
 
   const handleMouseLeave = () => {
-    // Only handle hover on desktop (non-mobile)
     if (!isMobile) {
       setIsHovering(false);
       pauseVideo();
@@ -110,7 +107,6 @@ function ProjectCard({ project, setCurrentView }) {
   const hasVideo = cardVideoUrl && !videoError;
   const hasImage = project.imageUrl;
   
-  // On mobile, show video when card is in view; on desktop, show video on hover
   const showVideo = hasVideo && (isMobile ? isInView : isHovering);
   const showImage = hasImage && !showVideo;
 

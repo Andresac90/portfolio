@@ -4,7 +4,7 @@ import ProjectCard from './ProjectCard';
 import { projectsData } from '../data/projects';
 import '../styles/ProjectGrid.css';
 
-function ProjectGrid({ setCurrentView }) {
+function ProjectGrid() {
   return (
     <section id="projects" className="projects-section">
       <div className="projects-container">
@@ -17,7 +17,6 @@ function ProjectGrid({ setCurrentView }) {
             <ProjectCard
               key={project.id}
               project={project}
-              setCurrentView={setCurrentView}
             />
           ))}
         </div>

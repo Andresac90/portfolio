@@ -118,29 +118,29 @@ export const projectsData = [
     id: 5,
     title: "Monster's Flow",
     shortDescription: "A first person arcade game inspired by call of duty zombies mode. Developed enemy wave system and power-up mechanics using Unity.",
-    fullDescription: "This game was developed for the Game & Simulation class at Centennial College. I was the solo developer of the project and .",
+    fullDescription: "Inspired by Call of Duty zombies, the player can shoot water magic to fire monsters. This game was developed for the Game & Simulation class at Centennial College, as a solo developer I programmed the main gameplay movement and all the corresponding systems, all the assets are from Unity Asset Store.",
     role: "Programmer",
-    tags: ["Unity", "C#", "Strategy", "Comedy"],
+    tags: ["Unity", "C#", "First person shooter", "Arcade"],
     imageUrl: "/portfolio/assets/images/monstersflow-ss4.jpg",
-    videoUrl: "",
+    videoUrl: "/portfolio/assets/videos/monstersflow-video.mp4", 
+    videoPreviewUrl: "/portfolio/assets/videos/monstersflow-video-compressed.mp4",
     features: [
-      "Timing-based stealth mechanics",
-      "Teacher AI with detection system",
-      "Multiple classmate personalities",
-      "Risk vs reward decision making"
+      "Round-based enemy wave system",
+      "Water magic shooting mechanics",
+      "Perks and power-ups",
+      "Variety of enemy types"
     ],
     achievements: [
-      "Created humorous and relatable gameplay",
-      "Implemented challenging stealth AI",
-      "Designed engaging risk-reward mechanics"
+      "Developed the game as a solo developer for a college project",
+      "Used game programming patterns to create modular and reusable code"
     ],
     links: {
       itchio: "https://andresac90.itch.io/monsters-flow"
     },
     gallery: [
+      { type: "image", url: "/portfolio/assets/images/monstersflow-ss3.jpg" },
       { type: "image", url: "/portfolio/assets/images/monstersflow-ss1.jpg" },
       { type: "image", url: "/portfolio/assets/images/monstersflow-ss2.jpg" },
-      { type: "image", url: "/portfolio/assets/images/monstersflow-ss3.jpg" },
       { type: "image", url: "/portfolio/assets/images/monstersflow-ss4.jpg" }
     ]
   },
@@ -219,7 +219,7 @@ export const projectsData = [
       "Use of atmosphere and tension"
     ],
     links: {
-      itchio: "https://andresac90.itch.io/escapa-de-la-isla-de-las-munecas"
+      itchio: "https://nefarious-game-studios.itch.io/escapa-de-la-isla-de-las-muecas"
     },
     gallery: []
   },
