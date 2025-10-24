@@ -1,47 +1,42 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import { projectsData } from './data/projects';
 import './App.css';
 
-function App() {
-  const [currentView, setCurrentView] = useState({ type: 'home' });
+function AppContent() {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isProjectPage = location.pathname.includes('/project/');
 
   useEffect(() => {
     const handleScroll = () => {
-      // Only apply scrolled effect on home page
-      if (currentView.type === 'home') {
+      if (!isProjectPage) {
         setScrolled(window.scrollY > 50);
       } else {
-        // Always keep navbar in scrolled state on project pages
         setScrolled(true);
       }
     };
     
-    handleScroll(); // Call immediately to set initial state
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentView]);
+  }, [isProjectPage]);
 
-  // Scroll to top when view changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentView]);
+  }, [location.pathname]);
 
-  const renderView = () => {
-    switch (currentView.type) {
-      case 'project':
-        const project = projectsData.find(p => p.id === currentView.projectId);
-        return (
-          <ProjectPage
-            project={project}
-            setCurrentView={setCurrentView}
-          />
-        );
-      default:
-        return <HomePage setCurrentView={setCurrentView} />;
+  const setCurrentView = (view) => {
+    if (view.type === 'home') {
+      navigate('/portfolio/');
+    } else if (view.type === 'project') {
+      navigate(`/portfolio/project/${view.projectId}`);
     }
   };
 
@@ -49,11 +44,37 @@ function App() {
     <div className="app">
       <Navbar
         scrolled={scrolled}
-        currentView={currentView}
+        currentView={{ type: isProjectPage ? 'project' : 'home' }}
         setCurrentView={setCurrentView}
       />
-      {renderView()}
+      <Routes>
+        <Route path="/portfolio/" element={<HomePage setCurrentView={setCurrentView} />} />
+        <Route path="/portfolio/project/:projectId" element={<ProjectPageWrapper setCurrentView={setCurrentView} />} />
+      </Routes>
     </div>
+  );
+}
+
+function ProjectPageWrapper({ setCurrentView }) {
+  const { projectId } = useParams();
+  const navigate = useNavigate();
+  
+  // Convert projectId from string to number for comparison
+  const project = projectsData.find(p => p.id === parseInt(projectId, 10));
+
+  if (!project) {
+    navigate('/portfolio/');
+    return null;
+  }
+
+  return <ProjectPage project={project} setCurrentView={setCurrentView} />;
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

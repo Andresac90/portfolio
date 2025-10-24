@@ -1,12 +1,18 @@
 // src/pages/ProjectPage.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Lightbox from '../components/Lightbox';
 import '../styles/ProjectPage.css';
 
-function ProjectPage({ project, setCurrentView }) {
+function ProjectPage({ project }) {
+  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const handleBackClick = () => {
+    navigate('/portfolio/');
+  };
 
   if (!project) {
     return (
@@ -15,7 +21,7 @@ function ProjectPage({ project, setCurrentView }) {
           <p>Project not found.</p>
           <button 
             className="back-button"
-            onClick={() => setCurrentView({ type: 'home' })}
+            onClick={handleBackClick}
           >
             ← Back to Home
           </button>
@@ -38,7 +44,7 @@ function ProjectPage({ project, setCurrentView }) {
       <div className="project-container">
         <button 
           className="back-button"
-          onClick={() => setCurrentView({ type: 'home' })}
+          onClick={handleBackClick}
         >
           ← Back to Projects
         </button>

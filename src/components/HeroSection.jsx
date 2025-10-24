@@ -13,14 +13,13 @@ function HeroSection() {
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-profile">
-            <img src={profilePhoto} alt="Andrés Acevedo" className="hero-photo" />
+            <img src={profilePhoto} alt="Andres Acevedo" className="hero-photo" />
           </div>
           <div className="hero-text">
             <p className="hero-description">
-              Game programmer specializing in systems and gameplay programming, focused on 
-              writing efficient, clean code and tackling new challenges in game development.
+              Game Developer specializing in gameplay systems and graphics programming. Originally from Chihuahua, Mexico 🇲🇽
               <br />
-              @Toronto, ON 🇨🇦
+              Currently based in Toronto, Canada 🇨🇦
             </p>
             <button 
               className="hero-cta"

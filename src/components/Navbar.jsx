@@ -1,42 +1,53 @@
 // src/components/Navbar.jsx
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 import linkedinIcon from '../assets/icons/InBug-Black.png';
 import githubIcon from '../assets/icons/github-mark.svg'; 
 import itchioIcon from '../assets/icons/itchio-logo-textless-black.svg';
 import resumePDF from '../assets/resume/ResumeGameDev_Andres.pdf'; 
 
-function Navbar({ scrolled, currentView, setCurrentView }) {
+function Navbar({ scrolled, currentView }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    navigate('/portfolio/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleProjectsClick = () => {
+    if (location.pathname === '/portfolio/') {
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/portfolio/');
+      setTimeout(() => {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <button 
           className="nav-logo-wrapper"
-          onClick={() => setCurrentView({ type: 'home' })}
+          onClick={handleHomeClick}
         >
-          <div className="nav-logo">Andrés Acevedo</div>
+          <div className="nav-logo">Andres Acevedo</div>
           <div className="nav-subtitle">Game Programmer</div>
         </button>
         
         <div className="nav-links">
           <button
             className={`nav-link ${currentView.type === 'home' ? 'active' : ''}`}
-            onClick={() => setCurrentView({ type: 'home' })}
+            onClick={handleHomeClick}
           >
             Home
           </button>
           <button
             className="nav-link"
-            onClick={() => {
-              if (currentView.type === 'home') {
-                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                setCurrentView({ type: 'home' });
-                setTimeout(() => {
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }
-            }}
+            onClick={handleProjectsClick}
           >
             Projects
           </button>
