@@ -64,31 +64,26 @@ export const projectsData = [
   {
     id: 3,
     title: "Robot Simulation",
-    shortDescription: "A mental health focused RPG with rhythm-based combat. Directed the project and developed the dual-world gameplay system and gameplay mechanics in Unreal Engine 5.",
-    fullDescription: "The Book of Glory is a unique RPG that explores mental health themes through a dual-world gameplay experience. Players navigate between a realistic daily life and fantastical dream adventures, featuring rhythm-based combat mechanics that challenge both timing and strategy.",
-    role: "Game Director & Gameplay Programmer",
-    tags: ["Unreal Engine 5", "C++", "Blueprints", "RPG"],
+    shortDescription: "A simulation for the company Four DRobotics.",
+    fullDescription: "This simulation was desiged using Unreal Engine 5 during my period as a student reseacher in Centennial College. The goal was to simulate a robot moving in different scenarios and identifying different threats along the map",
+    role: "Programmer",
+    tags: ["Unreal Engine 5", "C++", "Blueprints", "Simulation"],
     imageUrl: "/portfolio/assets/images/robotsimulation-image.jpg",
     videoUrl: "/portfolio/assets/videos/robotsimulation-video.mp4", 
     videoPreviewUrl: "/portfolio/assets/videos/robotsimulation-video-preview.mp4", 
     features: [
-      "Dual-world gameplay systems",
-      "Rhythm-based combat mechanics integrated with RPG elements",
-      "Mental health narrative that explores psychological themes",
-      "Paper Mario-inspired art style"
+      "Use chaos physics for realistic robot movement",
+      "Threat detection system",
+      "Navigation and pathfinding"
     ],
     achievements: [
-      "Designed, programmed, and optimized core gameplay mechanics, systems, and events for the video games Colors and The Book of Glory using C#, C++, and Blueprints in Unity and Unreal Engine",
-      "Led a 12-member startup using the Scrum methodology to ensure efficient project management and maintained project organization through GitHub version control",
-      "Presented The Book of Glory in a virtual booth at Gamescom 2023"
+      "Developed a full simulation during a 3 months research program",
+      "Followed stakeholder requirements to deliver a functional product"
     ],
-    links: {
-      itchio: "https://nefarious-game-studios.itch.io/tbog"
-    },
     gallery: [
-      { type: "image", url: "/portfolio/assets/images/tbog-ss1.jpg" },
-      { type: "image", url: "/portfolio/assets/images/tbog-ss2.jpg" },
-      { type: "image", url: "/portfolio/assets/images/tbog-ss3.jpg" }
+      { type: "image", url: "/portfolio/assets/images/robotsimulation-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/robotsimulation-ss2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/robotsimulation-ss3.jpg" }
     ]
   },
   {
@@ -123,10 +118,10 @@ export const projectsData = [
     id: 5,
     title: "Monster's Flow",
     shortDescription: "A first person arcade game inspired by call of duty zombies mode. Developed enemy wave system and power-up mechanics using Unity.",
-    fullDescription: "A lighthearted strategy game where players must cleverly copy answers from classmates while avoiding the teacher's watchful eye. Features timing-based mechanics and strategic planning.",
+    fullDescription: "This game was developed for the Game & Simulation class at Centennial College. I was the solo developer of the project and .",
     role: "Programmer",
     tags: ["Unity", "C#", "Strategy", "Comedy"],
-    imageUrl: "/portfolio/assets/images/indiesmx-cover.jpg",
+    imageUrl: "/portfolio/assets/images/monstersflow-ss4.jpg",
     videoUrl: "",
     features: [
       "Timing-based stealth mechanics",
@@ -140,9 +135,14 @@ export const projectsData = [
       "Designed engaging risk-reward mechanics"
     ],
     links: {
-      itchio: "https://andresac90.itch.io/indiesmx-classroom"
+      itchio: "https://andresac90.itch.io/monsters-flow"
     },
-    gallery: []
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/monstersflow-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/monstersflow-ss2.jpg" },
+      { type: "image", url: "/portfolio/assets/images/monstersflow-ss3.jpg" },
+      { type: "image", url: "/portfolio/assets/images/monstersflow-ss4.jpg" }
+    ]
   },
   {
     id: 6,
@@ -174,27 +174,30 @@ export const projectsData = [
   {
     id: 7,
     title: "Colors - A colorful adventure",
-    shortDescription: "A vibrant platformer with color-based mechanics. Designed unique color puzzles and polished movement controls using Unity.",
-    fullDescription: "Colors is a cheerful platforming game that takes players through vibrant, colorful worlds. Each level features unique color-based mechanics and challenges, creating a visually stunning and mechanically diverse experience.",
-    role: "Developer",
+    shortDescription: "Platforming game with a color theme mechanic. My first videogame developed.",
+    fullDescription: "An endless runner mobile platforming game, where the player needs to change color to progress. Made with Unity in 2019, this is the first game I developed and the first project of Nefarious Game Studios.",
+    role: "Director, Programmer & Designer",
     tags: ["Unity", "C#", "Platformer", "Casual"],
     imageUrl: "/portfolio/assets/images/colors-image.jpg",
     videoUrl: "",
     features: [
       "Color-based gameplay mechanics",
-      "Vibrant art style and visuals",
-      "Progressive difficulty across levels",
-      "Satisfying platforming controls"
+      "Pixel-art style and visuals",
+      "Endless runner level design",
+      "Online leaderboards integration"
     ],
     achievements: [
-      "Created visually appealing game world",
-      "Designed color-based puzzle mechanics",
-      "Polished movement and controls"
+      "Designed a full videogame around a unique color mechanic",
+      "Published my first game in Google Play and App Store",
+      "Learned to use Unity and C#"
     ],
     links: {
-      itchio: "https://andresac90.itch.io/colors"
+      itchio: "https://nefarious-game-studios.itch.io/colors-a-colorful-adventure"
     },
-    gallery: []
+    gallery: [
+      { type: "image", url: "/portfolio/assets/images/colors-ss1.jpg" },
+      { type: "image", url: "/portfolio/assets/images/colors-ss2.jpg" }
+    ]
   },
   {
     id: 8,
@@ -204,17 +207,16 @@ export const projectsData = [
     role: "Programmer & Designer",
     tags: ["Unreal Engine", "C++", "Horror", "Puzzle"],
     imageUrl: "/portfolio/assets/images/islamunecas-image.jpg",
-    videoUrl: "",
+    videoUrl: "/portfolio/assets/videos/escapadelaisla-video.mp4",
+    videoPreviewUrl: "/portfolio/assets/videos/escapadelaisla-video-compressed.mp4", 
     features: [
       "Atmospheric horror based on Mexican folklore",
-      "Complex puzzle-solving mechanics",
-      "Environmental storytelling",
-      "Cultural authenticity in setting and narrative"
+      "Puzzle-solving mechanics"
     ],
     achievements: [
-      "Created authentic Mexican horror experience",
       "Designed intricate puzzle sequences",
-      "Effective use of atmosphere and tension"
+      "Included Unreal Engine's fluid simulation for realistic water effects",
+      "Use of atmosphere and tension"
     ],
     links: {
       itchio: "https://andresac90.itch.io/escapa-de-la-isla-de-las-munecas"
@@ -224,21 +226,21 @@ export const projectsData = [
   {
     id: 9,
     title: "Classroom",
-    shortDescription: "A humorous stealth strategy game about cheating on exams. Implemented teacher AI detection system and timing-based stealth mechanics in Unity.",
-    fullDescription: "A lighthearted strategy game where players must cleverly copy answers from classmates while avoiding the teacher's watchful eye. Features timing-based mechanics and strategic planning.",
-    role: "Programmer",
-    tags: ["Unity", "C#", "Strategy", "Comedy"],
+    shortDescription: "A stealth game where the player needs to get the highest score in an exam, made for a Mexican Game Jam using Unity.",
+    fullDescription: "Classroom is a stealth game the players must avoid the AI-controlled teacher and strategically choose when to copy answers during an exam to maximize their score without getting caught.",
+    role: "Programmer & Designer",
+    tags: ["Unity", "C#", "Stealth"],
     imageUrl: "/portfolio/assets/images/classroom-image.jpg",
-    videoUrl: "",
+    videoUrl: "/portfolio/assets/videos/classroom-video.mp4",
+    videoPreviewUrl: "/portfolio/assets/videos/classroom-video-compressed.mp4", 
     features: [
-      "Timing-based stealth mechanics",
-      "Teacher AI with detection system",
-      "Multiple classmate personalities",
-      "Risk vs reward decision making"
+      "Stealth gameplay mechanics",
+      "Pixel-art style and visuals",
+      "AI-controlled teacher with detection system"
     ],
     achievements: [
-      "Created humorous and relatable gameplay",
-      "Implemented challenging stealth AI",
+      "Created a full stealth game during a 24-hour game jam",
+      "Impemented challenging AI behavior for the teacher",
       "Designed engaging risk-reward mechanics"
     ],
     links: {
