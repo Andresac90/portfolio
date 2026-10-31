@@ -5,7 +5,7 @@ import '../styles/Navbar.css';
 import linkedinIcon from '../assets/icons/InBug-Black.png';
 import githubIcon from '../assets/icons/github-mark.svg'; 
 import itchioIcon from '../assets/icons/itchio-logo-textless-black.svg';
-import resumePDF from '../assets/resume/ResumeGameDev_Andres.pdf'; 
+import resumePDF from '../assets/resume/Resume_Andres_Acevedo_Game_Dev_Level_Design.pdf'; 
 
 function Navbar({ scrolled, currentView }) {
   const navigate = useNavigate();
