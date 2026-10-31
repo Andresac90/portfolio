@@ -59,16 +59,20 @@ function ProjectPage({ project }) {
             <video 
               className="project-video-large"
               src={project.videoUrl}
+              poster={project.imageUrl}
               controls
               autoPlay
               loop
               muted
+              playsInline
+              preload="metadata"
             />
           ) : (
-            <img 
+            <img
               className="project-image-large"
-              src={project.imageUrl} 
+              src={project.imageUrl}
               alt={project.title}
+              decoding="async"
             />
           )}
         </div>
@@ -165,12 +169,15 @@ function ProjectPage({ project }) {
                       src={item.url}
                       loop
                       muted
+                      preload="metadata"
                     />
                   ) : (
-                    <img 
+                    <img
                       className="gallery-image"
-                      src={item.url} 
+                      src={item.url}
                       alt={`${project.title} screenshot ${index + 1}`}
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>

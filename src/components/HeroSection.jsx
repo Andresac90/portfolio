@@ -1,7 +1,7 @@
 // src/components/HeroSection.jsx
 import React from 'react';
 import '../styles/HeroSection.css';
-import profilePhoto from '../assets/images/profile-photo.jpg'; 
+import profilePhoto from '../assets/images/profile-photo.webp'; 
 
 function HeroSection() {
   const scrollToProjects = () => {

@@ -11,136 +11,87 @@ function ProjectCard({ project }) {
   const [videoError, setVideoError] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  // The preview video is only downloaded once the user shows interest
+  // (hover on desktop, scrolled into view on mobile). Until then, only the
+  // lightweight cover image is loaded.
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+
+  const cardVideoUrl = project.videoPreviewUrl || project.videoUrl;
+  const hasVideo = Boolean(cardVideoUrl) && !videoError;
+  const hasImage = Boolean(project.imageUrl);
+  const isActive = isMobile ? isInView : isHovering;
 
   useEffect(() => {
-    const checkMobile = () => {
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      const isSmallScreen = window.innerWidth <= 768;
-      return isTouchDevice && isSmallScreen;
-    };
-
-    const mobile = checkMobile();
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const mobile = isTouchDevice && window.innerWidth <= 768;
     setIsMobile(mobile);
 
-    if (mobile && cardRef.current) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-              setIsInView(true);
-            } else {
-              setIsInView(false);
-            }
-          });
-        },
-        {
-          threshold: [0, 0.25, 0.5, 0.75, 1.0],
-          rootMargin: '-20% 0px -20% 0px'
-        }
-      );
+    const card = cardRef.current;
+    if (!mobile || !card) return;
 
-      observer.observe(cardRef.current);
-
-      return () => {
-        if (cardRef.current) {
-          observer.unobserve(cardRef.current);
-        }
-      };
-    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting && entry.intersectionRatio >= 0.5),
+      { threshold: [0, 0.5, 1.0], rootMargin: '-20% 0px -20% 0px' }
+    );
+    observer.observe(card);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (isMobile && isInView) {
-      playVideo();
-    } else if (isMobile && !isInView) {
-      pauseVideo();
-    }
-  }, [isInView, isMobile]);
+    if (isActive && hasVideo) setShouldLoadVideo(true);
+  }, [isActive, hasVideo]);
 
-  const playVideo = () => {
-    const videoToPlay = project.videoPreviewUrl || project.videoUrl;
-    
-    if (videoRef.current && videoToPlay && !videoError) {
-      videoRef.current.play().catch(err => {
-        console.error('Error playing video:', err);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isActive) {
+      video.play().catch(() => {
+        // Autoplay can be blocked (e.g. low-power mode); the cover image stays visible.
       });
+    } else {
+      video.pause();
+      video.currentTime = 0;
     }
-  };
-
-  const pauseVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+  }, [isActive, shouldLoadVideo]);
 
   const handleClick = () => {
     navigate(`/portfolio/project/${project.id}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleMouseEnter = () => {
-    if (!isMobile) {
-      setIsHovering(true);
-      playVideo();
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobile) {
-      setIsHovering(false);
-      pauseVideo();
-    }
-  };
-
-  const handleVideoError = (e) => {
-    console.error('Video failed to load:', project.videoPreviewUrl || project.videoUrl, e);
-    setVideoError(true);
-  };
-
-  const handleVideoLoaded = () => {
-    console.log('Video loaded successfully:', project.videoPreviewUrl || project.videoUrl);
-  };
-
-  const cardVideoUrl = project.videoPreviewUrl || project.videoUrl;
-  
-  const hasVideo = cardVideoUrl && !videoError;
-  const hasImage = project.imageUrl;
-  
-  const showVideo = hasVideo && (isMobile ? isInView : isHovering);
-  const showImage = hasImage && !showVideo;
+  const showVideo = hasVideo && isActive && videoReady;
 
   return (
-    <div 
+    <div
       ref={cardRef}
-      className="project-card" 
+      className="project-card"
       onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => !isMobile && setIsHovering(true)}
+      onMouseLeave={() => !isMobile && setIsHovering(false)}
     >
       <div className="project-media">
-        {showImage && (
-          <img 
+        {hasImage && (
+          <img
             className="project-image"
-            src={project.imageUrl} 
+            src={project.imageUrl}
             alt={project.title}
+            loading="lazy"
+            decoding="async"
           />
         )}
-        
-        {hasVideo && (
-          <video 
-            key={`${project.id}-${cardVideoUrl}`}
+
+        {hasVideo && shouldLoadVideo && (
+          <video
             ref={videoRef}
-            className="project-video"
+            className={`project-video${showVideo ? ' is-visible' : ''}`}
             src={cardVideoUrl}
             loop
             muted
             playsInline
             preload="auto"
-            poster={project.imageUrl}
-            onError={handleVideoError}
-            onLoadedData={handleVideoLoaded}
-            style={{ display: showVideo ? 'block' : 'none' }}
+            onPlaying={() => setVideoReady(true)}
+            onError={() => setVideoError(true)}
           />
         )}
 

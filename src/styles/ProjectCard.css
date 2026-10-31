@@ -31,6 +31,18 @@
   transition: transform 0.3s ease;
 }
 
+.project-video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.project-video.is-visible {
+  opacity: 1;
+}
+
 .project-card:hover .project-image {
   transform: scale(1.05);
 }
