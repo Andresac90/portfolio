@@ -10,6 +10,11 @@
   flex-direction: column;
 }
 
+.project-card:focus-visible {
+  outline: 3px solid #e74c3c;
+  outline-offset: 4px;
+}
+
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);

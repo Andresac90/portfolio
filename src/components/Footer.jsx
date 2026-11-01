@@ -14,7 +14,7 @@ function Footer() {
         <div className="footer-content">
           <div className="footer-info">
             <h3 className="footer-name">Andres Acevedo</h3>
-            <p className="footer-title">Game Programmer</p>
+            <p className="footer-title">Game Developer</p>
           </div>
           
           <div className="footer-right">
@@ -41,6 +41,13 @@ function Footer() {
         </div>
         
         <div className="footer-bottom">
+          <button
+            type="button"
+            className="footer-back-to-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <span aria-hidden="true">↑</span> Back to top
+          </button>
           <p className="footer-copyright">
             © {currentYear} Andres Acevedo. All rights reserved.
           </p>

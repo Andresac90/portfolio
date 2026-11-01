@@ -1,13 +1,29 @@
 // src/components/Lightbox.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../styles/Lightbox.css';
 
 function Lightbox({ images, initialIndex, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
+  const count = images.length;
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % count);
+  }, [count]);
+
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + count) % count);
+  }, [count]);
+
+  // Lock page scrolling while the lightbox is open
   useEffect(() => {
+    const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         onClose();
@@ -19,20 +35,8 @@ function Lightbox({ images, initialIndex, onClose }) {
     };
 
     window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [currentIndex]);
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, goToNext, goToPrevious]);
 
   const currentImage = images[currentIndex];
 

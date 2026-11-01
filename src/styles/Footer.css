@@ -95,6 +95,34 @@
   text-align: center;
 }
 
+.footer-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-back-to-top:hover {
+  background-color: #ffffff;
+  color: #e74c3c;
+  transform: translateY(-2px);
+}
+
+.footer-back-to-top:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
 .footer-copyright {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);

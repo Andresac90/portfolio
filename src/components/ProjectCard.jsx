@@ -66,7 +66,18 @@ function ProjectCard({ project }) {
     <div
       ref={cardRef}
       className="project-card"
+      role="link"
+      tabIndex={0}
+      aria-label={`View project: ${project.title}`}
       onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      onFocus={() => !isMobile && setIsHovering(true)}
+      onBlur={() => !isMobile && setIsHovering(false)}
       onMouseEnter={() => !isMobile && setIsHovering(true)}
       onMouseLeave={() => !isMobile && setIsHovering(false)}
     >

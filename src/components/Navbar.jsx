@@ -1,5 +1,5 @@
 // src/components/Navbar.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 import linkedinIcon from '../assets/icons/InBug-Black.png';
@@ -10,6 +10,30 @@ import resumePDF from '../assets/resume/Resume_Andres_Acevedo_Game_Dev_Level_Des
 function Navbar({ scrolled, currentView }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [inProjectsSection, setInProjectsSection] = useState(false);
+
+  // Scroll-spy: on the home page, highlight "Projects" once the projects
+  // section reaches the upper part of the screen.
+  useEffect(() => {
+    if (currentView.type !== 'home') return;
+
+    const update = () => {
+      const section = document.getElementById('projects');
+      if (!section) return;
+      setInProjectsSection(section.getBoundingClientRect().top <= window.innerHeight * 0.4);
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [currentView.type]);
+
+  const activeLink =
+    currentView.type === 'project' || inProjectsSection ? 'projects' : 'home';
 
   const handleHomeClick = () => {
     navigate('/portfolio/');
@@ -20,10 +44,7 @@ function Navbar({ scrolled, currentView }) {
     if (location.pathname === '/portfolio/') {
       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      navigate('/portfolio/');
-      setTimeout(() => {
-        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      navigate('/portfolio/#projects');
     }
   };
 
@@ -35,18 +56,18 @@ function Navbar({ scrolled, currentView }) {
           onClick={handleHomeClick}
         >
           <div className="nav-logo">Andres Acevedo</div>
-          <div className="nav-subtitle">Game Programmer</div>
+          <div className="nav-subtitle">Game Developer</div>
         </button>
         
         <div className="nav-links">
           <button
-            className={`nav-link ${currentView.type === 'home' ? 'active' : ''}`}
+            className={`nav-link ${activeLink === 'home' ? 'active' : ''}`}
             onClick={handleHomeClick}
           >
             Home
           </button>
           <button
-            className="nav-link"
+            className={`nav-link ${activeLink === 'projects' ? 'active' : ''}`}
             onClick={handleProjectsClick}
           >
             Projects

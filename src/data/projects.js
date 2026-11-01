@@ -50,7 +50,7 @@ export const projectsData = [
     achievements: [
       "Successfully implemented multiplayer synchronization",
       "Created tension-building game mechanics",
-      "Developed the gameplay movement and interaction systems for playersß"
+      "Developed the gameplay movement and interaction systems for players"
     ],
     links: {
       itchio: "https://andresac90.itch.io/something-2-fear"
@@ -122,7 +122,7 @@ export const projectsData = [
     id: 3,
     title: "Robot Simulation",
     shortDescription: "A simulation for the company Four DRobotics.",
-    fullDescription: "This simulation was desiged using Unreal Engine 5 during my period as a student reseacher in Centennial College. The goal was to simulate a robot moving in different scenarios and identifying different threats along the map",
+    fullDescription: "This simulation was designed using Unreal Engine 5 during my period as a student researcher at Centennial College. The goal was to simulate a robot moving in different scenarios and identifying different threats along the map.",
     role: "Programmer",
     tags: ["Unreal Engine 5", "C++", "Blueprints", "Simulation"],
     imageUrl: "/portfolio/assets/images/robotsimulation-image.webp",
@@ -134,7 +134,7 @@ export const projectsData = [
       "Navigation and pathfinding"
     ],
     achievements: [
-      "Developed a full simulation during a 3 months research program",
+      "Developed a full simulation during a 3-month research program",
       "Followed stakeholder requirements to deliver a functional product"
     ],
     gallery: [
@@ -174,7 +174,7 @@ export const projectsData = [
   {
     id: 5,
     title: "Monster's Flow",
-    shortDescription: "A first person arcade game inspired by call of duty zombies mode. Developed enemy wave system and power-up mechanics using Unity.",
+    shortDescription: "A first person arcade game inspired by Call of Duty Zombies mode. Developed enemy wave system and power-up mechanics using Unity.",
     fullDescription: "Inspired by Call of Duty zombies, the player can shoot water magic to fire monsters. This game was developed for the Game & Simulation class at Centennial College, as a solo developer I programmed the main gameplay movement and all the corresponding systems, all the assets are from Unity Asset Store.",
     role: "Programmer",
     tags: ["Unity", "C#", "First person shooter", "Arcade"],
@@ -217,7 +217,7 @@ export const projectsData = [
     ],
     achievements: [
       "Developed a prototype in an international team during a semester exchange in South Korea",
-      "Sucessfully implemented fluid and responsive movement mechanics",
+      "Successfully implemented fluid and responsive movement mechanics",
       "Completed the prototype within 2 days"
     ],
     links: {
@@ -299,7 +299,7 @@ export const projectsData = [
     ],
     achievements: [
       "Created a full stealth game during a 24-hour game jam",
-      "Impemented challenging AI behavior for the teacher",
+      "Implemented challenging AI behavior for the teacher",
       "Designed engaging risk-reward mechanics"
     ],
     links: {

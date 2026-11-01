@@ -29,6 +29,10 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
+      // Props are plain data objects from src/data; PropTypes add noise without TypeScript
+      'react/prop-types': 'off',
+      // `import React` is kept for readability; the JSX runtime doesn't need it
+      'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

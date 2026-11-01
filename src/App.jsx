@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useParams, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
@@ -28,9 +28,18 @@ function AppContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isProjectPage]);
 
+  // On navigation: jump to the section named in the URL hash (e.g. "#projects"),
+  // otherwise start at the top of the page.
   useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const frame = requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      });
+      return () => cancelAnimationFrame(frame);
+    }
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash, location.key]);
 
   const setCurrentView = (view) => {
     if (view.type === 'home') {
@@ -50,6 +59,8 @@ function AppContent() {
       <Routes>
         <Route path="/portfolio/" element={<HomePage setCurrentView={setCurrentView} />} />
         <Route path="/portfolio/project/:projectId" element={<ProjectPageWrapper setCurrentView={setCurrentView} />} />
+        {/* Unknown URLs (typos, old links) go home instead of rendering a blank page */}
+        <Route path="*" element={<Navigate to="/portfolio/" replace />} />
       </Routes>
     </div>
   );
@@ -57,14 +68,13 @@ function AppContent() {
 
 function ProjectPageWrapper({ setCurrentView }) {
   const { projectId } = useParams();
-  const navigate = useNavigate();
-  
+
   // Convert projectId from string to number for comparison
   const project = projectsData.find(p => p.id === parseInt(projectId, 10));
 
+  // Redirect declaratively: calling navigate() during render is unsafe in React.
   if (!project) {
-    navigate('/portfolio/');
-    return null;
+    return <Navigate to="/portfolio/" replace />;
   }
 
   return <ProjectPage project={project} setCurrentView={setCurrentView} />;

@@ -10,8 +10,9 @@ function ProjectPage({ project }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  // Return to the projects grid rather than the top of the home page
   const handleBackClick = () => {
-    navigate('/portfolio/');
+    navigate('/portfolio/#projects');
   };
 
   if (!project) {
@@ -166,9 +167,11 @@ function ProjectPage({ project }) {
                   {item.type === 'video' ? (
                     <video 
                       className="gallery-video"
-                      src={item.url}
+                      // "#t=0.1" makes Safari/iOS render a first-frame thumbnail
+                      src={`${item.url}#t=0.1`}
                       loop
                       muted
+                      playsInline
                       preload="metadata"
                     />
                   ) : (
