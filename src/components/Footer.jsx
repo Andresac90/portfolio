@@ -11,6 +11,16 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
+        <div className="footer-top">
+          <button
+            type="button"
+            className="footer-back-to-top"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <span aria-hidden="true">↑</span> Back to top
+          </button>
+        </div>
+
         <div className="footer-content">
           <div className="footer-info">
             <h3 className="footer-name">Andres Acevedo</h3>
@@ -41,13 +51,6 @@ function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <button
-            type="button"
-            className="footer-back-to-top"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <span aria-hidden="true">↑</span> Back to top
-          </button>
           <p className="footer-copyright">
             © {currentYear} Andres Acevedo. All rights reserved.
           </p>
